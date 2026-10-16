@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} | {{ profile.name }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title }} | {{ profile.name }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  {%- if profile.headshot %}
+  <meta property="og:image" content="{{ site.url }}/assets/img/{{ profile.headshot }}-1200.jpg">
+  {%- endif %}
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-name" href="/">{{ profile.name }}</a>
+    <nav>
+      <a href="/football/">Football</a>
+      <a href="/academics/">Academics</a>
+      <a href="/personal/">Personal</a>
+      <a href="/media/">Video</a>
+      <a href="/cv/">CV</a>
+    </nav>
+  </header>
+  <main>
+    {{ content | safe }}
+  </main>
+  <footer class="site-footer">
+    <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+  </footer>
+</body>
+</html>
