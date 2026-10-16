@@ -5,6 +5,16 @@ description: Idris Thomas-Jones – attacking midfielder (CAM / #10), Chippenham
 ---
 {% include "profile-card.njk" %}
 
+{%- set homeQuotes = testimonials.testimonials | selectattr("homepage") %}
+{%- if homeQuotes.length %}
+<div class="quote-strip" data-rotate>
+  {%- for t in homeQuotes %}
+    {%- set hide = not loop.first %}
+    {% include "testimonial.njk" %}
+  {%- endfor %}
+</div>
+{%- endif %}
+
 {%- set tiles = [
   { section: "football", title: "Football", summary: football.summary },
   { section: "academics", title: "Academics", summary: academics.summary },

@@ -1,6 +1,6 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
-import { readFileSync, rmSync } from "node:fs";
+import { cpSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseHTML } from "linkedom";
 
@@ -38,3 +38,16 @@ export function page(outDir, urlPath) {
 
 export const text = (el) => (el?.textContent ?? "").replace(/\s+/g, " ").trim();
 export const byTestId = (doc, id) => [...doc.querySelectorAll(`[data-testid="${id}"]`)];
+
+// Builds the minimal fixture with some data files replaced, e.g.
+//   await buildVariant("realquote", { "testimonials.yml": "testimonials: [...]" })
+// Returns the output dir.
+export async function buildVariant(name, files) {
+  const dataDir = `tests/.out/data-${name}`;
+  rmSync(dataDir, { recursive: true, force: true });
+  cpSync("tests/fixtures/minimal-data", dataDir, { recursive: true });
+  for (const [file, body] of Object.entries(files)) writeFileSync(join(dataDir, file), body);
+  const outDir = `tests/.out/${name}`;
+  await buildSite({ dataDir: `../${dataDir}`, outDir });
+  return outDir;
+}

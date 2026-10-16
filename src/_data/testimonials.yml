@@ -1,1 +1,24 @@
-testimonials: []
+# Coach testimonials.
+#   homepage: true    – include in the rotating quote under the profile card
+#   placeholder: true – shows a "Sample quote" badge. Set to false once the quote is real.
+# The three below are SAMPLES while real quotes are collected. Replace each one's
+# quote, add the coach's name, and set placeholder: false.
+testimonials:
+  - quote: "Idris sees passes others don't. As a number 10 he links midfield and attack and makes the players around him better."
+    name: ""
+    role: "Academy coach"
+    club: "Chippenham Town"
+    homepage: true
+    placeholder: true
+  - quote: "His work rate off the ball matches his quality on it. He was a key part of our league-winning season."
+    name: ""
+    role: "Youth team manager"
+    club: "Chippenham Town U16"
+    homepage: true
+    placeholder: true
+  - quote: "A mature, coachable player who handled the step up to men's football at sixteen with real composure."
+    name: ""
+    role: "First-team coach"
+    club: "Chippenham Town"
+    homepage: true
+    placeholder: true

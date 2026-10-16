@@ -1,0 +1,8 @@
+<figure class="testimonial" data-testid="testimonial"{% if hide %} hidden{% endif %}>
+  <blockquote>“{{ t.quote }}”</blockquote>
+  {%- set who = [t.name, t.role, t.club] | select | join(", ") %}
+  <figcaption>
+    {%- if who %}<span>– {{ who }}</span>{% endif %}
+    {%- if t.placeholder %} <span class="badge-sample" data-testid="sample-badge">Sample quote</span>{% endif %}
+  </figcaption>
+</figure>
