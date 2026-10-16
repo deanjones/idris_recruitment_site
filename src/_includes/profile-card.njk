@@ -30,8 +30,9 @@
   </ul>
   {%- endif %}
   <div class="actions">
-    {%- if profile.highlight_url %}
-    <a class="btn btn-primary" data-testid="highlights-btn" href="{{ profile.highlight_url }}">▶ Highlights</a>
+    {%- set highlight = profile.highlight_url | parseVideo %}
+    {%- if highlight.provider != "none" %}
+    <a class="btn btn-primary" data-testid="highlights-btn" href="{{ highlight.href }}">▶ Highlights</a>
     {%- endif %}
     <a class="btn" data-testid="contact-btn" href="mailto:{{ profile.email }}">Contact</a>
     <a class="btn" data-testid="cv-btn" href="/cv/">CV</a>

@@ -1,9 +1,11 @@
 import yaml from "js-yaml";
+import { parseVideo } from "./lib/video.js";
 
 export default function (eleventyConfig) {
   eleventyConfig.addDataExtension("yml", (contents) => yaml.load(contents));
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/CNAME");
+  eleventyConfig.addFilter("parseVideo", parseVideo);
   eleventyConfig.addGlobalData("site", { url: "https://idristhomasjones.com" });
 
   return {

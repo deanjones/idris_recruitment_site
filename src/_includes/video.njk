@@ -1,0 +1,10 @@
+{%- if v.provider == "youtube" %}
+<a class="video-facade" data-testid="video" href="{{ v.href }}" data-embed="{{ v.embedUrl }}" aria-label="Play {{ title }}">
+  <img src="{{ v.thumbnailUrl }}" alt="" loading="lazy">
+  <span class="play" aria-hidden="true">▶</span>
+</a>
+{%- elif v.provider == "hudl" %}
+<a class="btn" data-testid="video" href="{{ v.href }}" rel="noopener">Watch on Hudl →</a>
+{%- elif v.provider == "link" %}
+<a class="btn" data-testid="video" href="{{ v.href }}" rel="noopener">Watch video →</a>
+{%- endif %}
