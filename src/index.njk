@@ -3,3 +3,20 @@ layout: base.njk
 title: Attacking Midfielder · Class of 2027
 description: Idris Thomas-Jones – attacking midfielder (CAM / #10), Chippenham Town Academy, Class of 2027. Recruiting profile for US college soccer.
 ---
+{% include "profile-card.njk" %}
+
+{%- set tiles = [
+  { section: "football", title: "Football", summary: football.summary },
+  { section: "academics", title: "Academics", summary: academics.summary },
+  { section: "personal", title: "Personal", summary: personal.summary },
+  { section: "media", title: "Video & photos", summary: videos.summary }
+] %}
+<div class="tiles">
+  {%- for t in tiles %}
+  <div class="tile" data-testid="tile" data-section="{{ t.section }}">
+    <h2>{{ t.title }}</h2>
+    {%- if t.summary %}<p>{{ t.summary }}</p>{% endif %}
+    <a class="more" href="/{{ t.section }}/">More →</a>
+  </div>
+  {%- endfor %}
+</div>
