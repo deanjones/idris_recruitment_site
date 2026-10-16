@@ -30,7 +30,7 @@
   </ul>
   {%- endif %}
   <div class="actions">
-    {%- set highlight = profile.highlight_url | parseVideo %}
+    {%- set highlight = (profile.highlight_url or (videos.highlight.url if videos.highlight else "")) | parseVideo %}
     {%- if highlight.provider != "none" %}
     <a class="btn btn-primary" data-testid="highlights-btn" href="{{ highlight.href }}">▶ Highlights</a>
     {%- endif %}

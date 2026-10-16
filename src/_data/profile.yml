@@ -13,7 +13,8 @@ email: idris.2009.soccer@gmail.com
 # Photo id printed by `npm run photos` (e.g. a1b2c3d4e5). Leave empty to show initials.
 headshot: ""
 
-# YouTube or Hudl link to the highlight reel. Leave empty to hide the Highlights button.
+# Optional: a different link for the Highlights button. If empty, the button uses
+# the highlight reel in videos.yml (and is hidden if there isn't one).
 highlight_url: ""
 
 # Optional facts shown on the card, e.g.

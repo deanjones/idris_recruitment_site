@@ -47,6 +47,13 @@ test("homepage highlights button uses the canonical YouTube link", () => {
   assert.doesNotMatch(text(withVideo.querySelector("main")), new RegExp(COMING_SOON));
 });
 
+test("highlights button falls back to videos.yml highlight", async () => {
+  const out = await buildVariant("highlight-fallback", {
+    "videos.yml": `summary: ""\nhighlight: {title: "Highlight reel", url: "https://youtu.be/dQw4w9WgXcQ"}\nmatches: []\n`,
+  });
+  assert.equal(byTestId(page(out, "/"), "highlights-btn")[0]?.getAttribute("href"), "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+});
+
 for (const [label, get] of [["full", () => full], ["minimal", () => minimal]]) {
   test(`${label}: no videos yet shows coming soon`, () => {
     const doc = get();
