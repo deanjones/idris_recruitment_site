@@ -1,0 +1,19 @@
+/* Printing (mainly the /cv/ page): one A4 sheet, black on white. */
+@page { size: A4; margin: 12mm; }
+
+:root { --bg: #fff; --panel: #f2f2f2; --panel-inner: #ddd; --muted: #444; --accent: #000; --text: #000; }
+
+body { background: #fff; color: #000; font-size: 9.5pt; line-height: 1.35; }
+.site-header, .site-footer, .cv-toolbar, nav { display: none !important; }
+main { max-width: none; padding: 0; }
+a { color: #000; text-decoration: none; }
+
+.cv { background: none; padding: 0; }
+.cv h1 { font-size: 18pt; }
+.cv h2 { font-size: 10pt; color: #000; border-bottom: 1px solid #000; }
+.cv-cols { grid-template-columns: 1fr 1fr; }
+.cv section, .testimonial { break-inside: avoid; }
+.stats li { background: none; border: 1px solid #999; }
+.stats b { color: #000; }
+.testimonial { background: none; border-left-color: #000; padding: 2px 8px; }
+.badge-sample { border-color: #000; color: #000; }

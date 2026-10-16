@@ -32,3 +32,7 @@ function initVideos(root = document) {
 }
 
 initVideos();
+
+for (const b of document.querySelectorAll("[data-print]")) {
+  b.addEventListener("click", () => window.print());
+}

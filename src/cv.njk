@@ -1,0 +1,101 @@
+---
+layout: base.njk
+title: Player CV
+description: One-page player CV for Idris Thomas-Jones – attacking midfielder, Class of 2027.
+permalink: /cv/
+---
+<div class="cv-toolbar">
+  <button type="button" class="btn btn-primary" data-testid="print-btn" data-print>Print / Save as PDF</button>
+</div>
+
+<article class="cv" data-testid="cv">
+  <header class="cv-head">
+    <div>
+      <h1>{{ profile.name }}</h1>
+      <p>{{ profile.class_of }}</p>
+      {%- if profile.positions.length %}<p><b>{{ profile.positions | join(" · ") }}</b></p>{% endif %}
+      <p>{{ profile.club }} · {{ profile.country }}</p>
+    </div>
+    <div class="cv-contact">
+      <a href="mailto:{{ profile.email }}">{{ profile.email }}</a><br>
+      <a href="{{ site.url }}/">{{ site.url | replace("https://", "") }}</a>
+      {%- for a in profile.attributes or [] %}<br>{{ a.label }}: {{ a.value }}{% endfor %}
+    </div>
+  </header>
+
+  {%- if profile.headline_stats.length %}
+  <ul class="stats cv-stats">
+    {%- for s in profile.headline_stats %}
+    <li data-testid="headline-stat"><b>{{ s.value }}</b><span>{{ s.label }}</span></li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+
+  <div class="cv-cols">
+    <div>
+      {%- if football.achievements and football.achievements.length %}
+      <section>
+        <h2>Football</h2>
+        <ul class="plain">
+          {%- for a in football.achievements %}
+          <li data-testid="achievement"><b>{{ a.season }}</b> {{ a.result }} – {{ a.competition }} ({{ a.team }})</li>
+          {%- endfor %}
+        </ul>
+      </section>
+      {%- endif %}
+
+      {%- set homeQuotes = testimonials.testimonials | selectattr("homepage") %}
+      {%- if homeQuotes.length %}
+      <section>
+        <h2>Coaches</h2>
+        {%- for t in homeQuotes %}{% set hide = false %}{% include "testimonial.njk" %}{% endfor %}
+      </section>
+      {%- endif %}
+    </div>
+
+    <div>
+      {%- if academics.alevels and academics.alevels.subjects.length %}
+      <section>
+        <h2>A-levels ({{ academics.alevels.year }})</h2>
+        <ul class="plain">
+          {%- for a in academics.alevels.subjects %}
+          <li><span data-testid="alevel">{{ a.subject }}</span>{% if a.predicted %} – predicted {{ a.predicted }}{% endif %}</li>
+          {%- endfor %}
+        </ul>
+      </section>
+      {%- endif %}
+
+      {%- if academics.gcses and academics.gcses.length %}
+      <section>
+        <h2>GCSEs{% if academics.gpa_equivalent %} · ≈{{ academics.gpa_equivalent }} GPA{% endif %}</h2>
+        <table class="data gcse">
+          <tbody>
+            {%- for g in academics.gcses %}
+            <tr data-testid="gcse-row"><td>{{ g.subject }}</td><td>{{ g.grade }}</td></tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+        {%- if academics.gcse_note %}<p class="muted">{{ academics.gcse_note }}</p>{% endif %}
+      </section>
+      {%- endif %}
+
+      {%- if academics.honours and academics.honours.length %}
+      <section>
+        <h2>Honours</h2>
+        <ul class="plain">
+          {%- for h in academics.honours %}<li data-testid="honour">{{ h }}</li>{% endfor %}
+        </ul>
+      </section>
+      {%- endif %}
+
+      {%- if academics.tests and academics.tests.length %}
+      <section>
+        <h2>Test scores</h2>
+        <ul class="plain">
+          {%- for t in academics.tests %}<li>{{ t.name }} {{ t.score }}</li>{% endfor %}
+        </ul>
+      </section>
+      {%- endif %}
+    </div>
+  </div>
+</article>
