@@ -1,0 +1,56 @@
+---
+layout: base.njk
+title: Football
+description: Idris Thomas-Jones – attacking midfielder (CAM / #10), Chippenham Town Academy. Honours, positions and coach testimonials.
+permalink: /football/
+---
+<h1 class="page-title">Football</h1>
+
+{%- if football.positions %}
+<section class="panel">
+  <h2>Positions</h2>
+  <p><b>{{ football.positions.primary }}</b>{% if football.positions.also.length %} · also {{ football.positions.also | join(", ") }}{% endif %}</p>
+</section>
+{%- endif %}
+
+{%- if football.achievements and football.achievements.length %}
+<section class="panel">
+  <h2>Achievements</h2>
+  <ul class="timeline">
+    {%- for a in football.achievements %}
+    <li data-testid="achievement">
+      <span class="season">{{ a.season }}</span>
+      <span><b>{{ a.result }}</b> – {{ a.competition }}<br><span class="muted">{{ a.team }}</span></span>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+{%- if football.stats and football.stats.length %}
+<section class="panel">
+  <h2>Season stats</h2>
+  <table class="data" data-testid="stats-table">
+    <thead><tr><th>Season</th><th>Team</th><th>Apps</th><th>Goals</th><th>Assists</th></tr></thead>
+    <tbody>
+      {%- for s in football.stats %}
+      <tr><td>{{ s.season }}</td><td>{{ s.team }}</td><td>{{ s.apps }}</td><td>{{ s.goals }}</td><td>{{ s.assists }}</td></tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</section>
+{%- endif %}
+
+{%- if testimonials.testimonials.length %}
+<section class="panel" id="testimonials">
+  <h2>What coaches say</h2>
+  <div class="quote-list">
+    {%- for t in testimonials.testimonials %}
+      {%- set hide = false %}
+      {% include "testimonial.njk" %}
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
+<p><a href="/media/">Watch highlights and full matches →</a></p>

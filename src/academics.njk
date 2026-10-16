@@ -1,0 +1,60 @@
+---
+layout: base.njk
+title: Academics
+description: Idris Thomas-Jones – A-levels in Maths, Chemistry and Biology, GCSE results (≈3.9 GPA) and academic honours.
+permalink: /academics/
+---
+<h1 class="page-title">Academics</h1>
+
+<div class="grid-2">
+{%- if academics.gpa_equivalent %}
+<section class="panel">
+  <h2>GPA equivalent</h2>
+  <p class="big">{{ academics.gpa_equivalent }}</p>
+  {%- if academics.gpa_note %}<p class="muted">{{ academics.gpa_note }}</p>{% endif %}
+</section>
+{%- endif %}
+
+{%- if academics.alevels and academics.alevels.subjects.length %}
+<section class="panel">
+  <h2>A-levels ({{ academics.alevels.year }})</h2>
+  <ul class="plain">
+    {%- for a in academics.alevels.subjects %}
+    <li><span data-testid="alevel">{{ a.subject }}</span>{% if a.predicted %} <span class="muted">Predicted: {{ a.predicted }}</span>{% endif %}</li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+</div>
+
+{%- if academics.gcses and academics.gcses.length %}
+<section class="panel">
+  <h2>GCSE results</h2>
+  {%- if academics.gcse_note %}<p class="muted">{{ academics.gcse_note }}</p>{% endif %}
+  <table class="data gcse">
+    <tbody>
+      {%- for g in academics.gcses %}
+      <tr data-testid="gcse-row"><td>{{ g.subject }}</td><td>{{ g.grade }}</td></tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</section>
+{%- endif %}
+
+{%- if academics.honours and academics.honours.length %}
+<section class="panel">
+  <h2>Honours</h2>
+  <ul class="plain">
+    {%- for h in academics.honours %}<li data-testid="honour">{{ h }}</li>{% endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+{%- if academics.tests and academics.tests.length %}
+<section class="panel">
+  <h2>Test scores</h2>
+  <ul class="plain">
+    {%- for t in academics.tests %}<li data-testid="test-score"><b>{{ t.name }}</b> {{ t.score }}</li>{% endfor %}
+  </ul>
+</section>
+{%- endif %}

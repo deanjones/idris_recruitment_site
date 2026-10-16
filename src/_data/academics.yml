@@ -1,1 +1,35 @@
 summary: "≈3.9 GPA · A-levels in Maths, Chemistry, Biology · Four grade 9s at GCSE"
+
+gpa_equivalent: "3.9"
+gpa_note: "Estimated US equivalent of GCSE results; not an official GPA."
+
+alevels:
+  year: 2027
+  # Add predicted grades when known, e.g. predicted: "A*"
+  subjects:
+    - {subject: Maths, predicted: ""}
+    - {subject: Chemistry, predicted: ""}
+    - {subject: Biology, predicted: ""}
+
+gcse_note: "GCSEs are graded 9–1; 9 is the highest grade."
+gcses:
+  - {subject: Biology, grade: 9}
+  - {subject: Chemistry, grade: 9}
+  - {subject: Physics, grade: 9}
+  - {subject: PE, grade: 9}
+  - {subject: Maths, grade: 8}
+  - {subject: English Language, grade: 8}
+  - {subject: Spanish, grade: 8}
+  - {subject: History, grade: 7}
+  - {subject: Religious Studies, grade: 7}
+  - {subject: English Literature, grade: 6}
+
+# Never use a prize's real name if it could identify the school.
+honours:
+  - "School prize for academic excellence"
+  - "School Prize for Outstanding Commitment to Physical Education"
+  - "Nominated for the school English Prize"
+  - "Nominated for the school Maths Prize"
+
+# Optional, e.g. - {name: SAT, score: "1450"}
+tests: []

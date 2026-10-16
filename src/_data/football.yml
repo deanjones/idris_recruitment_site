@@ -1,1 +1,24 @@
 summary: "NFYL South Premier champions 25/26 · JPL Southwest champions 24/25 · Men's Step 5 debut at 16"
+
+positions:
+  primary: "Attacking Midfielder (CAM / #10)"
+  also: ["Right Wing", "Left Wing"]
+
+# Newest first. Use seasons (e.g. 2025/26), never exact dates.
+achievements:
+  - season: "2025/26"
+    team: "Chippenham Town Academy"
+    competition: "National Football Youth League (NFYL) – South Premier Division"
+    result: "Champions"
+  - season: "2025/26"
+    team: "Chippenham Town"
+    competition: "Senior men's football, Step 5"
+    result: "Signed and made senior debut, aged 16"
+  - season: "2024/25"
+    team: "Chippenham Town U16"
+    competition: "JPL Southwest Division"
+    result: "Champions – qualified for the National Finals"
+
+# Optional season stats, e.g.
+#   - {season: "2025/26", team: "Chippenham Town Academy", apps: 20, goals: 8, assists: 10}
+stats: []
