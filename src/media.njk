@@ -36,7 +36,20 @@ permalink: /media/
 </section>
 {%- endif %}
 
-{#- Photo grid is added with the photo pipeline. #}
+{%- if photoList.length %}
+<section class="panel">
+  <h2>Photos</h2>
+  <div class="photo-grid">
+    {%- for p in photoList %}
+    <figure data-testid="photo">
+      {%- set id = p.id %}{% set alt = p.alt %}{% set sizes = "(max-width: 600px) 50vw, 300px" %}
+      {% include "photo.njk" %}
+      {%- if p.caption %}<figcaption>{{ p.caption }}</figcaption>{% endif %}
+    </figure>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
 
 {%- if highlight.provider == "none" and not matches.length and not photoList.length %}
 <p class="muted">Video and photos coming soon.</p>

@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: Personal
+description: About Idris Thomas-Jones – attacking midfielder and student, Class of 2027.
+permalink: /personal/
+---
+<h1 class="page-title">Personal</h1>
+
+{%- set details = personal.details or [] %}
+{%- if personal.bio %}
+<section class="panel" data-testid="bio">
+  {%- for para in personal.bio | trim | split("\n\n") %}
+  <p>{{ para | trim }}</p>
+  {%- endfor %}
+</section>
+{%- endif %}
+
+{%- if details.length %}
+<section class="panel">
+  <dl class="details">
+    {%- for d in details %}
+    <div data-testid="detail"><dt>{{ d.label }}</dt><dd>{{ d.value }}</dd></div>
+    {%- endfor %}
+  </dl>
+</section>
+{%- endif %}
+
+{%- if not personal.bio and not details.length %}
+<p class="muted">More about Idris coming soon.</p>
+{%- endif %}

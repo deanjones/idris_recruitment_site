@@ -4,7 +4,8 @@
   "scripts": {
     "test": "node --test --test-concurrency=1 \"tests/**/*.test.mjs\"",
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "photos": "node scripts/process-photos.mjs"
   },
   "type": "module",
   "dependencies": {

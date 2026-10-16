@@ -6,6 +6,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addFilter("parseVideo", parseVideo);
+  eleventyConfig.addFilter("split", (str, sep) => String(str ?? "").split(sep));
   eleventyConfig.addGlobalData("site", { url: "https://idristhomasjones.com" });
 
   return {

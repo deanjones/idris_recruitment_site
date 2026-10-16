@@ -1,1 +1,9 @@
 summary: ""
+
+# A few short paragraphs in Idris's own voice. Leave a blank line between paragraphs.
+bio: ""
+
+# Label/value facts, e.g.
+#   - {label: Nationality, value: British}
+#   - {label: Interests, value: "..."}
+details: []
