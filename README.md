@@ -82,7 +82,8 @@ Delete any sample you don't replace before you start emailing coaches.
 
 1. Create a **public** repository on GitHub (free Pages needs a public repo) and push this branch as `main`.
 2. In the repo, go to **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
-3. Every push to `main` now runs `.github/workflows/deploy.yml`. If any test fails, nothing is published. Check the **Actions** tab.
+3. In **Settings → Secrets and variables → Actions**, add a repository secret named `PRIVATE_TERMS` with the same lines as your `private-terms.txt`. **Deploys fail until this is set.** That's deliberate, so the school-name check can never be silently skipped.
+4. Every push to `main` now runs `.github/workflows/deploy.yml`. If any test fails, nothing is published. Check the **Actions** tab.
 
 ## Custom domain
 
@@ -111,7 +112,7 @@ Then:
 Idris is under 18, and this repository is public, including its full history.
 
 - Never write his school's name, his date of birth or his birth month anywhere: content, captions, commit messages or filenames. Use seasons (`2025/26`), not dates.
-- Create a file called `private-terms.txt` in the repo root with one term per line: the school's name, real prize names, your street or town, and so on. It's gitignored, and `npm test` fails if any of those terms appear on the site. Run `npm test` before you push.
+- Create a file called `private-terms.txt` in the repo root with one term per line: the school's name, real prize names, your street or town, and so on. It's gitignored, and `npm test` fails if any of those terms appear on the site. Put the same lines in the `PRIVATE_TERMS` secret (see Deploying) so GitHub runs the same check. Locally the check shows as *skipped* until the file exists.
 - Only add photos through `npm run photos`. Never commit anything in `originals/`.
 - Anything ever committed stays in git history, even after you delete it. If something slips in, ask for help rewriting history rather than just deleting the file.
 - Set your git author email to your GitHub no-reply address (**GitHub → Settings → Emails**), then run `git config user.email "<id>+<username>@users.noreply.github.com"` in this repo.

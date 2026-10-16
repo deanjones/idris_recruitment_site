@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
 import { FULL, buildFull } from "./helpers.mjs";
+import { loadPrivateTerms } from "./private-terms.mjs";
 
 const EMAIL = "idris.2009.soccer@gmail.com";
 
@@ -39,12 +40,11 @@ test("no phone links", () => {
 });
 
 test("private terms (school name etc.) never appear", (t) => {
-  if (!existsSync("private-terms.txt")) {
-    t.diagnostic("private-terms.txt not found – school-name check skipped");
+  const terms = loadPrivateTerms();
+  if (!terms) {
+    t.skip("private-terms.txt not found – school-name check skipped");
     return;
   }
-  const terms = readFileSync("private-terms.txt", "utf8")
-    .split("\n").map((s) => s.trim()).filter(Boolean);
   for (const { f, body } of textFiles) {
     const lower = body.toLowerCase();
     for (const term of terms) assert.ok(!lower.includes(term.toLowerCase()), `private term found in ${f}`);

@@ -11,7 +11,7 @@
     <div class="profile-id">
       <div class="eyebrow">{{ profile.class_of }}</div>
       <h1>{{ profile.name }}</h1>
-      <p class="positions">{{ profile.positions | join(" · ") }}</p>
+      {%- if profile.positions and profile.positions.length %}<p class="positions">{{ profile.positions | join(" · ") }}</p>{% endif %}
       <p class="club">{{ profile.club }} · {{ profile.country }}</p>
       {%- if profile.attributes and profile.attributes.length %}
       <dl class="attributes">

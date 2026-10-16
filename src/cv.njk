@@ -13,7 +13,7 @@ permalink: /cv/
     <div>
       <h1>{{ profile.name }}</h1>
       <p>{{ profile.class_of }}</p>
-      {%- if profile.positions.length %}<p><b>{{ profile.positions | join(" · ") }}</b></p>{% endif %}
+      {%- if profile.positions and profile.positions.length %}<p><b>{{ profile.positions | join(" · ") }}</b></p>{% endif %}
       <p>{{ profile.club }} · {{ profile.country }}</p>
     </div>
     <div class="cv-contact">
@@ -44,7 +44,7 @@ permalink: /cv/
       </section>
       {%- endif %}
 
-      {%- set homeQuotes = testimonials.testimonials | selectattr("homepage") %}
+      {%- set homeQuotes = (testimonials.testimonials or []) | selectattr("homepage") %}
       {%- if homeQuotes.length %}
       <section>
         <h2>Coaches</h2>

@@ -9,7 +9,7 @@ permalink: /personal/
 {%- set details = personal.details or [] %}
 {%- if personal.bio %}
 <section class="panel" data-testid="bio">
-  {%- for para in personal.bio | trim | split("\n\n") %}
+  {%- for para in personal.bio | string | trim | split("\n\n") %}
   <p>{{ para | trim }}</p>
   {%- endfor %}
 </section>

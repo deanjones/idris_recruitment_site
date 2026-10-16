@@ -24,6 +24,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # School name, real prize names etc. – kept out of the public repo.
+      - name: Write private terms
+        env:
+          PRIVATE_TERMS: ${{ secrets.PRIVATE_TERMS }}
+        run: printf '%s\n' "$PRIVATE_TERMS" > private-terms.txt
       # Tests include the privacy checks: a failure stops the deploy.
       - run: npm test
       - run: npm run build

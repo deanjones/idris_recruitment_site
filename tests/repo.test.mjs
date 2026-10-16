@@ -43,3 +43,19 @@ test("README covers the owner's jobs", () => {
     "## Privacy checklist",
   ]) assert.ok(readme.includes(h), `README missing "${h}"`);
 });
+
+test("CI writes the private terms from a secret before testing", () => {
+  const body = read(".github/workflows/deploy.yml");
+  const w = body.indexOf("secrets.PRIVATE_TERMS");
+  assert.ok(w > -1, "workflow does not use the PRIVATE_TERMS secret");
+  assert.ok(w < body.indexOf("npm test"), "private terms must be written before npm test");
+});
+
+test("sample quotes don't name a club or a person", async () => {
+  const { default: yaml } = await import("js-yaml");
+  const { testimonials } = yaml.load(read("src/_data/testimonials.yml"));
+  for (const t of testimonials.filter((t) => t.placeholder)) {
+    assert.ok(!t.name, "sample quote has a name");
+    assert.ok(!t.club, `sample quote names a club: ${t.club}`);
+  }
+});
