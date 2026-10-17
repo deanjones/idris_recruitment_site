@@ -14,8 +14,8 @@ npm test        # builds the site and runs every check, including the privacy ch
 
 | File | What it controls |
 |---|---|
-| `profile.yml` | Profile card: name, class, positions, club, headline stats, headshot, highlight link, optional attributes (height, foot…) |
-| `testimonials.yml` | Coach quotes (homepage, Football page, CV) |
+| `profile.yml` | Profile card: name, class, positions, club, headshot (and its zoom), highlight link, optional attributes (height, foot…) |
+| `testimonials.yml` | Coach quotes (homepage and Football page) |
 | `football.yml` | Football page: positions, achievements, optional season stats |
 | `academics.yml` | Academics page: GPA equivalent, A-levels, GCSEs, honours, optional test scores |
 | `videos.yml` | Highlight reel and full-match videos |
@@ -71,7 +71,7 @@ The three quotes in `testimonials.yml` are **samples** and are shown with a "Sam
   name: "Coach's name"
   role: "U18 Head Coach"
   club: "Chippenham Town Academy"
-  homepage: true        # include in the homepage strip and on the CV
+  homepage: true        # include in the homepage strip
   placeholder: false    # removes the Sample badge
 ```
 

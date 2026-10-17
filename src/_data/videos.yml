@@ -3,6 +3,7 @@ summary: "Highlight reel and full-match footage"
 # Paste a YouTube (unlisted is fine) or Hudl link.
 highlight:
   title: "Highlight reel"
+  details: "U16 / U18"   # optional line under the title
   url: "https://youtu.be/TBAiTGMY0GE"
 
 # Full matches, newest first. Month/year dates are fine.
@@ -11,3 +12,10 @@ matches:
     date: "July 2025"
     watch_for: "#10, blue shirt"
     url: "https://youtu.be/gr1T0sek7_I"
+
+# Wide photo across the top of the Videos page. Delete the id to remove it.
+# Focus is the part of the photo to keep in the strip, as "across% down%".
+banner:
+  id: 87c962107d
+  alt: "Idris celebrating with his team-mates after a win"
+  focus: "50% 55%"

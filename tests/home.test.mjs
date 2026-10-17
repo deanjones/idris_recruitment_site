@@ -31,9 +31,8 @@ test("minimal: no GPA line without a GPA", () => {
   assert.equal(byTestId(minimal, "gpa").length, 0);
 });
 
-test("contact and CV buttons", () => {
+test("contact button", () => {
   assert.equal(byTestId(full, "contact-btn")[0].getAttribute("href"), "mailto:idris.2009.soccer@gmail.com");
-  assert.equal(byTestId(full, "cv-btn")[0].getAttribute("href"), "/cv/");
 });
 
 test("three tiles in order, each linking to its page", () => {
@@ -83,4 +82,54 @@ test("headshot can be zoomed onto the face from profile.yml", () => {
 test("no Personal section anywhere", () => {
   assert.ok(!full.querySelector('a[href="/personal/"]'), "a link to /personal/ is still on the page");
   assert.equal(existsSync(`${FULL}/personal/index.html`), false);
+});
+
+test("buttons sit beside the photo, under the profile text", () => {
+  const id = byTestId(full, "profile-card")[0].querySelector(".profile-top .profile-id");
+  for (const b of ["highlights-btn", "contact-btn"]) {
+    assert.ok(id.querySelector(`[data-testid="${b}"]`), `${b} not in the text column beside the photo`);
+  }
+  assert.ok(id.querySelector('[data-testid="gpa"]').compareDocumentPosition(id.querySelector(".actions")) & 4, "buttons should follow the text");
+});
+
+test("academics tile summary", () => {
+  const tile = full.querySelector('[data-testid="tile"][data-section="academics"]');
+  assert.equal(text(tile.querySelector("p")), "3.9 GPA, 11 GCSEs, studying A-levels in Maths, Chemistry, Biology");
+});
+
+test("football tile shows its summary as three separate lines", () => {
+  const tile = full.querySelector('[data-testid="tile"][data-section="football"]');
+  const lines = [...tile.querySelectorAll(".tile-lines li")].map(text);
+  assert.deepEqual(lines, [
+    "NFYL South Premier champions 25/26",
+    "JPL Southwest champions 24/25",
+    "JPL Southwest champions 23/24",
+  ]);
+  assert.ok(!text(tile).includes("·"), "summary still uses dots");
+});
+
+test("no CV page or links to it", () => {
+  assert.ok(!full.querySelector('a[href="/cv/"]'), "a link to /cv/ is still on the page");
+  assert.equal(byTestId(full, "cv-btn").length, 0);
+  assert.equal(existsSync(`${FULL}/cv/index.html`), false);
+  assert.ok(!full.querySelector('link[href="/assets/css/print.css"]'), "print stylesheet still linked");
+});
+
+test("no banner photo on the homepage", () => {
+  assert.equal(byTestId(full, "banner").length, 0);
+});
+
+test("minimal: no banner", () => {
+  assert.equal(byTestId(minimal, "banner").length, 0);
+});
+
+test("height and weight sit directly under the club line", () => {
+  const club = byTestId(full, "profile-card")[0].querySelector(".profile-id .club");
+  const next = club.nextElementSibling;
+  assert.equal(next.getAttribute("data-testid"), "height-weight");
+  assert.equal(text(next), "178cm / 74kg");
+});
+
+test("minimal: no height/weight line when not set", () => {
+  assert.equal(byTestId(minimal, "height-weight").length, 0);
 });

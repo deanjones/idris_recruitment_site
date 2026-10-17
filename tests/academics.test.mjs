@@ -9,12 +9,13 @@ before(async () => {
   minimal = page(MINIMAL, "/academics/");
 });
 
-test("GCSE table has 10 rows in order", () => {
+test("GCSE table has 11 rows in order", () => {
   const rows = byTestId(full, "gcse-row");
-  assert.equal(rows.length, 10);
+  assert.equal(rows.length, 11);
   const cells = (r) => [...r.querySelectorAll("td")].map(text);
   assert.deepEqual(cells(rows[0]), ["Biology", "9"]);
   assert.deepEqual(cells(rows[9]), ["English Literature", "6"]);
+  assert.deepEqual(cells(rows[10]), ["Statistics", "6"]);
 });
 
 test("three A-levels with no predicted grade shown yet", () => {
@@ -32,7 +33,10 @@ test("GPA equivalent with its note", () => {
 test("four honours and no test scores", () => {
   const honours = byTestId(full, "honour");
   assert.equal(honours.length, 4);
-  assert.equal(text(honours[0]), "School prize for academic excellence");
+  assert.equal(text(honours[0]), "High School Prize for Academic Excellence");
+  assert.equal(text(honours[1]), "High School Prize for Outstanding Commitment to Physical Education");
+  assert.equal(text(honours[2]), "Nominated for the High School English Prize");
+  assert.equal(text(honours[3]), "Nominated for the High School Maths Prize");
   assert.equal(byTestId(full, "test-score").length, 0);
 });
 

@@ -15,6 +15,7 @@
       {%- if profile.positions_short %}<p class="positions">{{ profile.positions_short }}</p>
       {%- elif profile.positions and profile.positions.length %}<p class="positions">{{ profile.positions | join(" · ") }}</p>{% endif %}
       <p class="club">{{ profile.club }} · {{ profile.country }}</p>
+      {%- if profile.height_weight %}<p data-testid="height-weight">{{ profile.height_weight }}</p>{% endif %}
       {%- if academics.gpa_equivalent %}
       <p class="gpa" data-testid="gpa"><b>{{ academics.gpa_equivalent }} GPA</b> (US equivalent)</p>
       {%- endif %}
@@ -25,14 +26,13 @@
         {%- endfor %}
       </dl>
       {%- endif %}
+      <div class="actions">
+        {%- set highlight = (profile.highlight_url or (videos.highlight.url if videos.highlight else "")) | parseVideo %}
+        {%- if highlight.provider != "none" %}
+        <a class="btn btn-primary" data-testid="highlights-btn" href="{{ highlight.href }}">▶ Highlights</a>
+        {%- endif %}
+        <a class="btn" data-testid="contact-btn" href="mailto:{{ profile.email }}">Contact</a>
+      </div>
     </div>
-  </div>
-  <div class="actions">
-    {%- set highlight = (profile.highlight_url or (videos.highlight.url if videos.highlight else "")) | parseVideo %}
-    {%- if highlight.provider != "none" %}
-    <a class="btn btn-primary" data-testid="highlights-btn" href="{{ highlight.href }}">▶ Highlights</a>
-    {%- endif %}
-    <a class="btn" data-testid="contact-btn" href="mailto:{{ profile.email }}">Contact</a>
-    <a class="btn" data-testid="cv-btn" href="/cv/">CV</a>
   </div>
 </section>

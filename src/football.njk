@@ -9,10 +9,10 @@ permalink: /football/
 <div class="page-main">
 <h1 class="page-title">Football</h1>
 
-{%- if football.positions %}
+{%- if profile.positions_short %}
 <section class="panel">
   <h2>Positions</h2>
-  <p><b>{{ football.positions.primary }}</b>{% if football.positions.also.length %} · also {{ football.positions.also | join(", ") }}{% endif %}</p>
+  <p><b>{{ profile.positions_short }}</b></p>
 </section>
 {%- endif %}
 

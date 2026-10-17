@@ -1,4 +1,4 @@
-summary: "≈3.9 GPA · A-levels in Maths, Chemistry, Biology · Four grade 9s at GCSE"
+summary: "3.9 GPA, 11 GCSEs, studying A-levels in Maths, Chemistry, Biology"
 
 gpa_equivalent: "3.9"
 gpa_note: "Estimated US equivalent of GCSE results; not an official GPA."
@@ -23,13 +23,14 @@ gcses:
   - {subject: History, grade: 7}
   - {subject: Religious Studies, grade: 7}
   - {subject: English Literature, grade: 6}
+  - {subject: Statistics, grade: 6}
 
 # Never use a prize's real name if it could identify the school.
 honours:
-  - "School prize for academic excellence"
-  - "School Prize for Outstanding Commitment to Physical Education"
-  - "Nominated for the school English Prize"
-  - "Nominated for the school Maths Prize"
+  - "High School Prize for Academic Excellence"
+  - "High School Prize for Outstanding Commitment to Physical Education"
+  - "Nominated for the High School English Prize"
+  - "Nominated for the High School Maths Prize"
 
 # Optional, e.g. - {name: SAT, score: "1450"}
 tests: []

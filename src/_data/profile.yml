@@ -1,4 +1,4 @@
-# Shown on the homepage profile card, the CV and in page metadata.
+# Shown on the homepage profile card and in page metadata.
 name: Idris Thomas-Jones
 initials: IT-J
 class_of: "Class of 2027 · Fall entry"
@@ -6,10 +6,12 @@ positions:
   - "Attacking Midfielder (CAM / #10)"
   - "Right Wing"
   - "Left Wing"
-# Short form shown on the homepage card (the full names above are used elsewhere).
+# Short form shown on the homepage card and the Football page.
 positions_short: "CAM / RW / LW"
 club: Chippenham Town Academy
 country: England
+# Shown on the homepage card under the club line.
+height_weight: "178cm / 74kg"
 email: idris.2009.soccer@gmail.com
 
 # Photo id printed by `npm run photos` (e.g. a1b2c3d4e5). Leave empty to show initials.
@@ -27,10 +29,3 @@ highlight_url: ""
 #   - {label: Height, value: "5'10\" / 178 cm"}
 #   - {label: Preferred foot, value: Right}
 attributes: []
-
-# Shown as stat boxes on the CV (the homepage shows just the GPA, from academics.yml).
-headline_stats:
-  - {value: "3.9", label: "GPA equivalent"}
-  - {value: "4 × 9", label: "GCSE top grades"}
-  - {value: "2 ×", label: "League champions"}
-  - {value: "16", label: "Age at men's Step 5 debut"}

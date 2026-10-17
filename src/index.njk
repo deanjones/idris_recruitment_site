@@ -24,7 +24,13 @@ description: Idris Thomas-Jones – attacking midfielder (CAM / #10), Chippenham
   {%- for t in tiles %}
   <div class="tile" data-testid="tile" data-section="{{ t.section }}">
     <h2>{{ t.title }}</h2>
-    {%- if t.summary %}<p>{{ t.summary }}</p>{% endif %}
+    {%- if t.summary is string %}
+      {%- if t.summary %}<p>{{ t.summary }}</p>{% endif %}
+    {%- elif t.summary and t.summary.length %}
+    <ul class="tile-lines">
+      {%- for line in t.summary %}<li>{{ line }}</li>{% endfor %}
+    </ul>
+    {%- endif %}
     <a class="more" href="/{{ t.section }}/">More →</a>
   </div>
   {%- endfor %}

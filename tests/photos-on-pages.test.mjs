@@ -14,7 +14,6 @@ initials: IT-J
 email: idris.2009.soccer@gmail.com
 headshot: "${ID}"
 positions: []
-headline_stats: []
 `,
     "photos.yml": `photos:
   - {id: "${ID}", alt: "Idris on the ball", caption: "NFYL match"}

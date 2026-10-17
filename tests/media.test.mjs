@@ -15,7 +15,6 @@ initials: IT-J
 email: idris.2009.soccer@gmail.com
 highlight_url: "https://youtu.be/dQw4w9WgXcQ"
 positions: []
-headline_stats: []
 `,
     "videos.yml": `summary: ""
 highlight: {title: "Highlight reel", url: "https://youtu.be/dQw4w9WgXcQ"}
@@ -77,4 +76,24 @@ test("highlight and matches share one grid so the players are the same size", ()
   }
   const cards = [...withVideo.querySelectorAll(".video-grid > .video-card")];
   assert.equal(text(cards[0].querySelector("h3")), "Highlight reel");
+});
+
+test("highlight card shows its details line under the title", () => {
+  const card = full.querySelector(".video-grid > .video-card");
+  assert.equal(text(card.querySelector("h3")), "Highlight reel");
+  assert.equal(text(card.querySelector("h3 + p.muted")), "U16 / U18");
+});
+
+test("banner photo sits at the top of the Videos page", () => {
+  const main = full.querySelector("main");
+  const banner = main.querySelector('[data-testid="banner"]');
+  assert.ok(banner, "no banner");
+  assert.ok(main.firstElementChild === banner, "banner is not the first thing on the page");
+  const img = banner.querySelector("img");
+  assert.match(img.getAttribute("src"), /^\/assets\/img\/87c962107d-1200\.jpg$/);
+  assert.notEqual(img.getAttribute("alt"), "");
+});
+
+test("minimal: no banner on the Videos page", () => {
+  assert.equal(byTestId(minimal, "banner").length, 0);
 });

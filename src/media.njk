@@ -4,6 +4,14 @@ title: Videos
 description: Idris Thomas-Jones – highlight reel, full-match video and photos.
 permalink: /media/
 ---
+{%- if videos.banner and videos.banner.id %}
+<figure class="banner" data-testid="banner">
+  {%- set id = videos.banner.id %}{% set alt = videos.banner.alt %}{% set sizes = "(max-width: 960px) 100vw, 960px" %}
+  {%- set style = "object-position: " + videos.banner.focus if videos.banner.focus else "" %}
+  {% include "photo.njk" %}
+</figure>
+{%- endif %}
+{%- set style = "" %}
 <h1 class="page-title">Videos</h1>
 
 {%- set highlight = (videos.highlight.url if videos.highlight else "") | parseVideo %}
@@ -16,6 +24,7 @@ permalink: /media/
     {%- if highlight.provider != "none" %}
     <article class="video-card">
       <h3>{{ videos.highlight.title or "Highlight reel" }}</h3>
+      {%- if videos.highlight.details %}<p class="muted">{{ videos.highlight.details }}</p>{% endif %}
       {%- set v = highlight %}{% set title = videos.highlight.title or "Highlight reel" %}
       {% include "video.njk" %}
     </article>

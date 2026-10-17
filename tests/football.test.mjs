@@ -53,3 +53,9 @@ test("feature photo sits in a right-hand column beside the football content", ()
 test("minimal: football page has no feature column", () => {
   assert.equal(byTestId(minimal, "feature-image").length, 0);
 });
+
+test("positions panel shows the short form", () => {
+  const panel = [...full.querySelectorAll("section.panel")].find((s) => text(s.querySelector("h2")) === "Positions");
+  assert.ok(panel, "no Positions panel");
+  assert.equal(text(panel.querySelector("p")), "CAM / RW / LW");
+});
