@@ -46,7 +46,7 @@ test("feature photo sits in a right-hand column beside the football content", ()
   assert.ok(left.querySelector('[data-testid="achievement"]'), "achievements not in left column");
   const img = right.querySelector('[data-testid="feature-image"] img');
   assert.ok(img, "no feature image in right column");
-  assert.match(img.getAttribute("src"), /^\/assets\/img\/bb838a5b15-1200\.jpg$/);
+  assert.match(img.getAttribute("src"), /^\/assets\/img\/6eb7ce23e2-1200\.jpg$/);
   assert.notEqual(img.getAttribute("alt"), "");
 });
 

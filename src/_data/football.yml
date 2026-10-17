@@ -7,7 +7,7 @@ summary:
 # Tall photo shown down the right-hand side of the Football page (hidden on phones).
 # Use a photo id from `npm run photos`; leave id empty to drop the column.
 feature_image:
-  id: bb838a5b15
+  id: 6eb7ce23e2
   alt: "Idris Thomas-Jones in a blue match kit"
 
 # Newest first. Use seasons (e.g. 2025/26), never exact dates.
