@@ -1,5 +1,11 @@
 summary: "NFYL South Premier champions 25/26 · JPL Southwest champions 24/25 · Men's Step 5 debut at 16"
 
+# Tall photo shown down the right-hand side of the Football page (hidden on phones).
+# Use a photo id from `npm run photos`; leave id empty to drop the column.
+feature_image:
+  id: bb838a5b15
+  alt: "Idris Thomas-Jones in a blue match kit"
+
 positions:
   primary: "Attacking Midfielder (CAM / #10)"
   also: ["Right Wing", "Left Wing"]
@@ -12,12 +18,20 @@ achievements:
     result: "Champions"
   - season: "2025/26"
     team: "Chippenham Town"
+    competition: "Senior men's football"
+    result: "First team debut, aged 16"
+  - season: "2025/26"
+    team: "Highworth Town"
     competition: "Senior men's football, Step 5"
-    result: "Signed and made senior debut, aged 16"
+    result: "Senior debut, aged 16"
   - season: "2024/25"
     team: "Chippenham Town U16"
     competition: "JPL Southwest Division"
-    result: "Champions – qualified for the National Finals"
+    result: "Champions"
+  - season: "2023/24"
+    team: "Cirencester Town U15"
+    competition: "JPL Southwest Division"
+    result: "Champions"
 
 # Optional season stats, e.g.
 #   - {season: "2025/26", team: "Chippenham Town Academy", apps: 20, goals: 8, assists: 10}

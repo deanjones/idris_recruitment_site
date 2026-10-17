@@ -34,11 +34,11 @@ test("placeholder quotes carry a Sample quote badge", () => {
 });
 
 test("minimal: no testimonial region", () => {
-  assert.equal(minimal.querySelector("[data-rotate]"), null);
+  assert.ok(!minimal.querySelector("[data-rotate]"));
 });
 
 test("real quote has no badge and shows attribution", () => {
   const q = byTestId(real, "testimonial")[0];
-  assert.equal(q.querySelector('[data-testid="sample-badge"]'), null);
+  assert.ok(!q.querySelector('[data-testid="sample-badge"]'));
   assert.match(text(q.querySelector("figcaption")), /Jo Bloggs.*Coach.*Somewhere FC/);
 });

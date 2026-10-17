@@ -4,6 +4,9 @@ title: Football
 description: Idris Thomas-Jones – attacking midfielder (CAM / #10), Chippenham Town Academy. Honours, positions and coach testimonials.
 permalink: /football/
 ---
+{%- set feature = football.feature_image if (football.feature_image and football.feature_image.id) else null %}
+<div class="page-layout{% if feature %} has-feature{% endif %}">
+<div class="page-main">
 <h1 class="page-title">Football</h1>
 
 {%- if football.positions %}
@@ -54,3 +57,11 @@ permalink: /football/
 {%- endif %}
 
 <p><a href="/media/">Watch highlights and full matches →</a></p>
+</div>
+{%- if feature %}
+<aside class="page-feature" data-testid="feature-image">
+  {%- set id = feature.id %}{% set alt = feature.alt %}{% set sizes = "300px" %}{% set style = "" %}
+  {% include "photo.njk" %}
+</aside>
+{%- endif %}
+</div>

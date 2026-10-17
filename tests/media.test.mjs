@@ -2,7 +2,7 @@ import { test, before } from "node:test";
 import assert from "node:assert/strict";
 import { FULL, MINIMAL, buildFull, buildMinimal, buildVariant, page, text, byTestId } from "./helpers.mjs";
 
-const COMING_SOON = "Video and photos coming soon.";
+const COMING_SOON = "Videos coming soon.";
 let full, minimal, withVideo, withVideoHome;
 
 before(async () => {
@@ -32,7 +32,7 @@ test("youtube highlight renders a click-to-load facade", () => {
   assert.ok(facade);
   assert.match(facade.getAttribute("data-embed"), /^https:\/\/www\.youtube-nocookie\.com\/embed\//);
   assert.equal(facade.getAttribute("href"), "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-  assert.equal(withVideo.querySelector("iframe"), null);
+  assert.ok(!withVideo.querySelector("iframe"));
 });
 
 test("hudl match renders a plain link with its details", () => {
@@ -54,10 +54,27 @@ test("highlights button falls back to videos.yml highlight", async () => {
   assert.equal(byTestId(page(out, "/"), "highlights-btn")[0]?.getAttribute("href"), "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 });
 
-for (const [label, get] of [["full", () => full], ["minimal", () => minimal]]) {
+for (const [label, get] of [["minimal", () => minimal]]) {
   test(`${label}: no videos yet shows coming soon`, () => {
     const doc = get();
     assert.equal(byTestId(doc, "video").length, 0);
     assert.match(text(doc.querySelector("main")), new RegExp(COMING_SOON));
   });
 }
+
+test("page, tile and menu are labelled Videos", () => {
+  assert.equal(text(full.querySelector("h1")), "Videos");
+  assert.match(full.querySelector("title").textContent, /^Videos \|/);
+  assert.equal(text(full.querySelector('nav a[href="/media/"]')), "Videos");
+  assert.equal(text(page(FULL, "/").querySelector('[data-section="media"] h2')), "Videos");
+});
+
+test("highlight and matches share one grid so the players are the same size", () => {
+  const players = byTestId(withVideo, "video");
+  assert.equal(players.length, 2);
+  for (const v of players) {
+    assert.ok(v.closest(".video-grid > .video-card"), "video not inside the shared grid");
+  }
+  const cards = [...withVideo.querySelectorAll(".video-grid > .video-card")];
+  assert.equal(text(cards[0].querySelector("h3")), "Highlight reel");
+});

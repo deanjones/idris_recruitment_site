@@ -6,12 +6,18 @@ positions:
   - "Attacking Midfielder (CAM / #10)"
   - "Right Wing"
   - "Left Wing"
+# Short form shown on the homepage card (the full names above are used elsewhere).
+positions_short: "CAM / RW / LW"
 club: Chippenham Town Academy
 country: England
 email: idris.2009.soccer@gmail.com
 
 # Photo id printed by `npm run photos` (e.g. a1b2c3d4e5). Leave empty to show initials.
-headshot: ""
+headshot: "740f65b63f"
+# Zoom the card's crop onto his face: 1 = whole photo, 2 = twice as close.
+# Focus is the point to zoom towards, as "across% down%" of the photo.
+headshot_zoom: 1.5
+headshot_focus: "40% 28%"
 
 # Optional: a different link for the Highlights button. If empty, the button uses
 # the highlight reel in videos.yml (and is hidden if there isn't one).
@@ -22,6 +28,7 @@ highlight_url: ""
 #   - {label: Preferred foot, value: Right}
 attributes: []
 
+# Shown as stat boxes on the CV (the homepage shows just the GPA, from academics.yml).
 headline_stats:
   - {value: "3.9", label: "GPA equivalent"}
   - {value: "4 × 9", label: "GCSE top grades"}

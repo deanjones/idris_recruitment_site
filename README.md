@@ -18,7 +18,6 @@ npm test        # builds the site and runs every check, including the privacy ch
 | `testimonials.yml` | Coach quotes (homepage, Football page, CV) |
 | `football.yml` | Football page: positions, achievements, optional season stats |
 | `academics.yml` | Academics page: GPA equivalent, A-levels, GCSEs, honours, optional test scores |
-| `personal.yml` | Personal page: bio and label/value details |
 | `videos.yml` | Highlight reel and full-match videos |
 | `photos.yml` | Photo gallery |
 

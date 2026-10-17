@@ -3,12 +3,11 @@ summary: "Highlight reel and full-match footage"
 # Paste a YouTube (unlisted is fine) or Hudl link.
 highlight:
   title: "Highlight reel"
-  url: ""
+  url: "https://youtu.be/TBAiTGMY0GE"
 
 # Full matches, newest first. Month/year dates are fine.
-matches: []
-#  - title: "v Example FC"
-#    competition: "NFYL South Premier"
-#    date: "March 2026"
-#    watch_for: "#10, white shirt"
-#    url: "https://youtu.be/XXXXXXXXXXX"
+matches:
+  - title: "Showcase Fixture"
+    date: "July 2025"
+    watch_for: "#10, blue shirt"
+    url: "https://youtu.be/gr1T0sek7_I"

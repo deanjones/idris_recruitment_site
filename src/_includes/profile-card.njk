@@ -2,7 +2,8 @@
   <div class="profile-top">
     <div class="headshot">
       {%- if profile.headshot %}
-        {%- set id = profile.headshot %}{% set alt = "Idris Thomas-Jones" %}{% set sizes = "120px" %}
+        {%- set id = profile.headshot %}{% set alt = "Idris Thomas-Jones" %}{% set sizes = "240px" %}
+        {%- set style = ("transform: scale(" + profile.headshot_zoom + "); transform-origin: " + (profile.headshot_focus or "50% 50%") + ";") if profile.headshot_zoom else "" %}
         {% include "photo.njk" %}
       {%- else %}
         <div class="initials" data-testid="initials">{{ profile.initials }}</div>
@@ -11,8 +12,12 @@
     <div class="profile-id">
       <div class="eyebrow">{{ profile.class_of }}</div>
       <h1>{{ profile.name }}</h1>
-      {%- if profile.positions and profile.positions.length %}<p class="positions">{{ profile.positions | join(" · ") }}</p>{% endif %}
+      {%- if profile.positions_short %}<p class="positions">{{ profile.positions_short }}</p>
+      {%- elif profile.positions and profile.positions.length %}<p class="positions">{{ profile.positions | join(" · ") }}</p>{% endif %}
       <p class="club">{{ profile.club }} · {{ profile.country }}</p>
+      {%- if academics.gpa_equivalent %}
+      <p class="gpa" data-testid="gpa"><b>{{ academics.gpa_equivalent }} GPA</b> (US equivalent)</p>
+      {%- endif %}
       {%- if profile.attributes and profile.attributes.length %}
       <dl class="attributes">
         {%- for a in profile.attributes %}
@@ -22,13 +27,6 @@
       {%- endif %}
     </div>
   </div>
-  {%- if profile.headline_stats and profile.headline_stats.length %}
-  <ul class="stats">
-    {%- for s in profile.headline_stats %}
-    <li data-testid="headline-stat"><b>{{ s.value }}</b><span>{{ s.label }}</span></li>
-    {%- endfor %}
-  </ul>
-  {%- endif %}
   <div class="actions">
     {%- set highlight = (profile.highlight_url or (videos.highlight.url if videos.highlight else "")) | parseVideo %}
     {%- if highlight.provider != "none" %}

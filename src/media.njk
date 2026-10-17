@@ -1,34 +1,33 @@
 ---
 layout: base.njk
-title: Video & photos
+title: Videos
 description: Idris Thomas-Jones – highlight reel, full-match video and photos.
 permalink: /media/
 ---
-<h1 class="page-title">Video &amp; photos</h1>
+<h1 class="page-title">Videos</h1>
 
 {%- set highlight = (videos.highlight.url if videos.highlight else "") | parseVideo %}
 {%- set matches = videos.matches or [] %}
 {%- set photoList = photos.photos or [] %}
 
-{%- if highlight.provider != "none" %}
+{%- if highlight.provider != "none" or matches.length %}
 <section class="panel">
-  <h2>{{ videos.highlight.title or "Highlight reel" }}</h2>
-  {%- set v = highlight %}{% set title = videos.highlight.title or "Highlight reel" %}
-  {% include "video.njk" %}
-</section>
-{%- endif %}
-
-{%- if matches.length %}
-<section class="panel">
-  <h2>Full matches</h2>
-  <div class="match-list">
+  <div class="video-grid">
+    {%- if highlight.provider != "none" %}
+    <article class="video-card">
+      <h3>{{ videos.highlight.title or "Highlight reel" }}</h3>
+      {%- set v = highlight %}{% set title = videos.highlight.title or "Highlight reel" %}
+      {% include "video.njk" %}
+    </article>
+    {%- endif %}
     {%- for m in matches %}
     {%- set v = m.url | parseVideo %}
-    <article class="match">
-      <h3>{{ m.title }}</h3>
-      <p class="muted">{{ [m.competition, m.date] | select | join(" · ") }}</p>
+    <article class="video-card">
+      {%- if m.title %}<h3>{{ m.title }}</h3>{% endif %}
+      {%- set meta = [m.competition, m.date] | select | join(" · ") %}
+      {%- if meta %}<p class="muted">{{ meta }}</p>{% endif %}
       {%- if m.watch_for %}<p>Watch for: {{ m.watch_for }}</p>{% endif %}
-      {%- set title = m.title %}
+      {%- set title = m.title or "Match video" %}
       {% include "video.njk" %}
     </article>
     {%- endfor %}
@@ -52,5 +51,5 @@ permalink: /media/
 {%- endif %}
 
 {%- if highlight.provider == "none" and not matches.length and not photoList.length %}
-<p class="muted">Video and photos coming soon.</p>
+<p class="muted">Videos coming soon.</p>
 {%- endif %}

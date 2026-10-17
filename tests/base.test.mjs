@@ -22,5 +22,5 @@ test("CNAME is published", () => {
 });
 
 test("minimal: no og:image without a headshot", () => {
-  assert.equal(page(MINIMAL, "/").querySelector('meta[property="og:image"]'), null);
+  assert.ok(!page(MINIMAL, "/").querySelector('meta[property="og:image"]'));
 });

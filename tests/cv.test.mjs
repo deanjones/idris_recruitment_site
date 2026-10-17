@@ -1,5 +1,7 @@
 import { test, before } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import yaml from "js-yaml";
 import { FULL, MINIMAL, buildFull, buildMinimal, page, text, byTestId } from "./helpers.mjs";
 
 let full, cv, minimal;
@@ -26,7 +28,8 @@ test("identity and contact", () => {
 
 test("stats, achievements, grades and honours", () => {
   assert.equal(byTestId(cv, "headline-stat").length, 4);
-  assert.equal(byTestId(cv, "achievement").length, 3);
+  const { achievements } = yaml.load(readFileSync("src/_data/football.yml", "utf8"));
+  assert.equal(byTestId(cv, "achievement").length, achievements.length);
   assert.equal(byTestId(cv, "gcse-row").length, 10);
   assert.equal(byTestId(cv, "alevel").length, 3);
   assert.equal(byTestId(cv, "honour").length, 4);
