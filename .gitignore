@@ -5,3 +5,7 @@ docs/superpowers/
 .superpowers/
 private-terms.txt
 tests/.out/
+/private-terms*
+*~
+*.swp
+*.bak

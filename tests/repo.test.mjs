@@ -27,7 +27,8 @@ test("nothing private is tracked by git", () => {
   for (const f of files) {
     assert.ok(!f.startsWith("originals/"), f);
     assert.ok(!f.startsWith("docs/superpowers/"), f);
-    assert.notEqual(f, "private-terms.txt");
+    assert.ok(!f.startsWith("private-terms"), `private terms file (or a backup of it) is tracked: ${f}`);
+    assert.ok(!/~$|\.swp$|\.bak$/.test(f), `editor backup file is tracked: ${f}`);
   }
 });
 
