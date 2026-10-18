@@ -33,6 +33,17 @@ achievements:
     competition: "JPL Southwest Division"
     result: "Champions"
 
+# Academies and development programmes, newest first.
+development:
+  - years: "2024–present"
+    name: "Chippenham Town Academy"
+  - years: "2022–2025"
+    name: "Cirencester Town"
+  - years: "2018–2024"
+    name: "Swindon Town FITC Elite Player Program"
+  - years: "2016–2022"
+    name: "Stratton Youth"
+
 # Optional season stats, e.g.
 #   - {season: "2025/26", team: "Chippenham Town Academy", apps: 20, goals: 8, assists: 10}
 stats: []

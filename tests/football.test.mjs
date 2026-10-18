@@ -59,3 +59,22 @@ test("positions panel shows the short form", () => {
   assert.ok(panel, "no Positions panel");
   assert.equal(text(panel.querySelector("p")), "CAM / RW / LW");
 });
+
+test("development panel lists the Swindon Town programme after achievements", () => {
+  const panels = [...full.querySelectorAll("section.panel")];
+  const titles = panels.map((p) => text(p.querySelector("h2")));
+  const dev = panels[titles.indexOf("Development")];
+  assert.ok(dev, "no Development panel");
+  assert.ok(titles.indexOf("Development") > titles.indexOf("Achievements"), "Development should come after Achievements");
+  const items = [...dev.querySelectorAll('[data-testid="development"]')].map(text);
+  assert.deepEqual(items, [
+    "2024–present Chippenham Town Academy",
+    "2022–2025 Cirencester Town",
+    "2018–2024 Swindon Town FITC Elite Player Program",
+    "2016–2022 Stratton Youth",
+  ]);
+});
+
+test("minimal: no development panel without entries", () => {
+  assert.equal(byTestId(minimal, "development").length, 0);
+});

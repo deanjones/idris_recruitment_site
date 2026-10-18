@@ -30,6 +30,17 @@ permalink: /football/
 </section>
 {%- endif %}
 
+{%- if football.development and football.development.length %}
+<section class="panel">
+  <h2>Development</h2>
+  <ul class="timeline">
+    {%- for d in football.development %}
+    <li data-testid="development"><span class="season">{{ d.years }}</span> <span>{{ d.name }}</span></li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
 {%- if football.stats and football.stats.length %}
 <section class="panel">
   <h2>Season stats</h2>

@@ -104,9 +104,10 @@ main { max-width: 960px; margin: 0 auto; padding: 12px 16px 24px; }
 .plain { list-style: none; padding: 0; margin: 0; }
 .plain li { padding: 2px 0; }
 .timeline { list-style: none; padding: 0; margin: 0; }
-.timeline li { display: grid; grid-template-columns: 64px 1fr; gap: 8px; padding: 6px 0; border-top: 1px solid var(--panel-inner); }
+.timeline li { display: grid; grid-template-columns: 7.5em 1fr; gap: 8px; padding: 6px 0; border-top: 1px solid var(--panel-inner); }
 .timeline li:first-child { border-top: 0; }
-.season { color: var(--accent); font-weight: 700; }
+.season { color: var(--accent); font-weight: 700; white-space: nowrap; }
+@media (max-width: 480px) { .timeline li { grid-template-columns: 1fr; gap: 0; } }
 .data { border-collapse: collapse; width: 100%; font-size: 15px; }
 .data th, .data td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--panel-inner); }
 .data th { color: var(--muted); font-weight: 600; }
