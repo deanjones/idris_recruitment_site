@@ -1,5 +1,6 @@
 import yaml from "js-yaml";
 import { parseVideo } from "./lib/video.js";
+import { quoteParts } from "./lib/quotes.js";
 
 export default function (eleventyConfig) {
   eleventyConfig.addDataExtension("yml", (contents) => yaml.load(contents));
@@ -12,6 +13,7 @@ export default function (eleventyConfig) {
     }
     return v;
   });
+  eleventyConfig.addFilter("quoteParts", quoteParts);
   eleventyConfig.addFilter("split", (str, sep) => String(str ?? "").split(sep));
   eleventyConfig.addGlobalData("site", { url: "https://idristhomasjones.com" });
 

@@ -52,11 +52,12 @@ test("CI writes the private terms from a secret before testing", () => {
   assert.ok(w < body.indexOf("npm test"), "private terms must be written before npm test");
 });
 
-test("sample quotes don't name a club or a person", async () => {
+test("testimonials are anonymous evaluation quotes; samples name no club", async () => {
   const { default: yaml } = await import("js-yaml");
   const { testimonials } = yaml.load(read("src/_data/testimonials.yml"));
-  for (const t of testimonials.filter((t) => t.placeholder)) {
-    assert.ok(!t.name, "sample quote has a name");
-    assert.ok(!t.club, `sample quote names a club: ${t.club}`);
+  for (const t of testimonials) {
+    assert.ok(!t.name, "testimonials must not name the coach");
+    assert.ok(t.coach && t.source, `testimonial needs a coach description and a source: ${t.quote}`);
+    if (t.placeholder) assert.ok(!/chippenham|swindon|cirencester|stratton|highworth/i.test(t.coach), `sample quote names a club: ${t.coach}`);
   }
 });

@@ -20,11 +20,19 @@ test("achievements listed in data order", () => {
   });
 });
 
-test("all testimonials shown with sample badges", () => {
+test("evaluation quotes panel is headed 'From coach evaluations'", () => {
+  assert.equal(text(full.querySelector("#testimonials h2")), "From coach evaluations");
+});
+
+test("every testimonial shown in full, sample badge only on placeholders", () => {
+  const { testimonials } = yaml.load(readFileSync("src/_data/testimonials.yml", "utf8"));
   const quotes = byTestId(full, "testimonial");
-  assert.equal(quotes.length, 3);
-  for (const q of quotes) assert.ok(q.querySelector('[data-testid="sample-badge"]'));
-  for (const q of quotes) assert.equal(q.hasAttribute("hidden"), false);
+  assert.equal(quotes.length, testimonials.length);
+  testimonials.forEach((t, i) => {
+    assert.equal(text(quotes[i].querySelector("blockquote")), `“${t.quote.trim()}”`);
+    assert.equal(Boolean(quotes[i].querySelector('[data-testid="sample-badge"]')), Boolean(t.placeholder));
+    assert.equal(quotes[i].hasAttribute("hidden"), false);
+  });
 });
 
 test("links to video page; no stats table without stats", () => {

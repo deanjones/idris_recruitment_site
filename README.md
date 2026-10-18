@@ -64,18 +64,17 @@ Any YouTube link format works (`youtu.be/…`, `watch?v=…`, Shorts). YouTube v
 
 ## Replacing the sample quotes
 
-The three quotes in `testimonials.yml` are **samples** and are shown with a "Sample quote" badge. When a coach sends a real quote:
+The quotes come word for word from written coach performance evaluations. They're shown anonymously, with a description of the coach and where the words came from. The three in `testimonials.yml` are **samples**, shown with a "Sample quote" badge. To add a real one:
 
 ```yaml
-- quote: "Their actual words."
-  name: "Coach's name"
-  role: "U18 Head Coach"
-  club: "Chippenham Town Academy"
+- quote: "The exact words from the evaluation."
+  coach: "Swindon Town FITC coach"     # describe the coach – never their name
+  source: "End-of-season performance evaluation, 2023/24"
   homepage: true        # include in the homepage strip
   placeholder: false    # removes the Sample badge
 ```
 
-Delete any sample you don't replace before you start emailing coaches.
+Keep quotes exactly as written – a coach may ask to see the evaluation. Delete any sample you don't replace before you start emailing coaches.
 
 ## Deploying
 

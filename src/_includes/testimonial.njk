@@ -1,8 +1,9 @@
 <figure class="testimonial" data-testid="testimonial"{% if hide %} hidden{% endif %}>
-  <blockquote>“{{ t.quote }}”</blockquote>
-  {%- set who = [t.name, t.role, t.club] | select | join(", ") %}
+  <blockquote>“{{ t.quote | trim }}”</blockquote>
+  {#- Evaluation quotes are anonymous: only a description of the coach is shown, never a name. #}
   <figcaption>
-    {%- if who %}<span>– {{ who }}</span>{% endif %}
+    {%- if t.coach | trim %}– <span data-testid="quote-coach">{{ t.coach | trim }}</span>{% endif %}
+    {%- if t.source | trim %}{% if t.coach | trim %} · {% endif %}<span class="quote-source" data-testid="quote-source">{{ t.source | trim }}</span>{% endif %}
     {%- if t.placeholder %} <span class="badge-sample" data-testid="sample-badge">Sample quote</span>{% endif %}
   </figcaption>
 </figure>

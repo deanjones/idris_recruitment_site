@@ -86,10 +86,14 @@ main { max-width: 960px; margin: 0 auto; padding: 12px 16px 24px; }
 .tile .more::after { content: ""; position: absolute; inset: 0; } /* whole tile clickable */
 
 /* Testimonials */
-.quote-strip { margin-top: 12px; }
+.quote-strip { margin-top: 12px; display: grid; }
+/* Stack every part in the same spot so the strip keeps the height of the longest one. */
+.quote-strip > .testimonial { grid-area: 1 / 1; }
+.quote-strip > .testimonial[hidden] { display: block; visibility: hidden; }
 .testimonial { margin: 0; background: var(--panel-inner); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 8px 12px; }
 .testimonial blockquote { margin: 0; font-style: italic; }
 .testimonial figcaption { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.quote-source { font-style: italic; }
 .badge-sample { display: inline-block; margin-left: 6px; padding: 0 6px; border: 1px solid var(--accent); border-radius: 3px; color: var(--accent); font-size: 12px; font-style: normal; text-transform: uppercase; letter-spacing: .05em; }
 
 /* Detail pages */
