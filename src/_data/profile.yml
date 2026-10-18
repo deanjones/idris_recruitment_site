@@ -11,7 +11,7 @@ positions_short: "CAM / RW / LW"
 club: Chippenham Town Academy
 country: England
 # Shown on the homepage card under the club line.
-height_weight: "178cm / 74kg"
+height_weight: '5''10" / 163lbs'
 email: idris.2009.soccer@gmail.com
 
 # Photo id printed by `npm run photos` (e.g. a1b2c3d4e5). Leave empty to show initials.

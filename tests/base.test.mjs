@@ -1,6 +1,6 @@
 import { test, before } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { FULL, MINIMAL, buildFull, buildMinimal, page } from "./helpers.mjs";
 
 before(async () => {
@@ -23,4 +23,15 @@ test("CNAME is published", () => {
 
 test("minimal: no og:image without a headshot", () => {
   assert.ok(!page(MINIMAL, "/").querySelector('meta[property="og:image"]'));
+});
+
+test("site icon is linked on every page and published", () => {
+  for (const p of ["/", "/football/", "/academics/", "/media/"]) {
+    const doc = page(FULL, p);
+    assert.equal(doc.querySelector('link[rel="icon"][type="image/svg+xml"]')?.getAttribute("href"), "/assets/icon.svg", p);
+    assert.equal(doc.querySelector('link[rel="apple-touch-icon"]')?.getAttribute("href"), "/assets/apple-touch-icon.png", p);
+  }
+  for (const f of ["assets/icon.svg", "assets/apple-touch-icon.png", "favicon.ico"]) {
+    assert.ok(existsSync(`${FULL}/${f}`), `${f} missing`);
+  }
 });

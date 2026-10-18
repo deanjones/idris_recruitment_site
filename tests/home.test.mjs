@@ -127,7 +127,7 @@ test("height and weight sit directly under the club line", () => {
   const club = byTestId(full, "profile-card")[0].querySelector(".profile-id .club");
   const next = club.nextElementSibling;
   assert.equal(next.getAttribute("data-testid"), "height-weight");
-  assert.equal(text(next), "178cm / 74kg");
+  assert.equal(text(next), `5'10" / 163lbs`);
 });
 
 test("minimal: no height/weight line when not set", () => {

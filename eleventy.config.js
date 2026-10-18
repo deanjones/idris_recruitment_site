@@ -6,6 +6,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addDataExtension("yml", (contents) => yaml.load(contents));
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/CNAME");
+  eleventyConfig.addPassthroughCopy("src/favicon.ico");
   eleventyConfig.addFilter("parseVideo", (url) => {
     const v = parseVideo(url);
     if (v.provider === "none" && String(url ?? "").trim()) {
