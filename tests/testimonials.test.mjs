@@ -74,6 +74,6 @@ test("homepage splits long evaluation quotes into two-sentence parts; Football p
   assert.deepEqual(parts.map((p) => text(p.querySelector("blockquote"))), ["“S1. S2.”", "“S3.”", "“T1. T2.”", "“T3. T4.”"]);
   assert.deepEqual(parts.map((p) => text(p.querySelector('[data-testid="quote-coach"]'))), ["Academy coach", "Academy coach", "U16 coach", "U16 coach"]);
   assert.deepEqual(parts.map((p) => p.hasAttribute("hidden")), [false, true, true, true]);
-  const football = page(out, "/football/");
+  const football = page(out, "/soccer/");
   assert.deepEqual(byTestId(football, "testimonial").map((p) => text(p.querySelector("blockquote"))), ["“S1. S2. S3.”", "“T1. T2. T3. T4.”"]);
 });

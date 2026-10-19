@@ -7,8 +7,8 @@ import { FULL, MINIMAL, buildFull, buildMinimal, page, text, byTestId } from "./
 let full, minimal;
 before(async () => {
   await Promise.all([buildFull(), buildMinimal()]);
-  full = page(FULL, "/football/");
-  minimal = page(MINIMAL, "/football/");
+  full = page(FULL, "/soccer/");
+  minimal = page(MINIMAL, "/soccer/");
 });
 
 test("achievements listed in data order", () => {
@@ -85,4 +85,24 @@ test("development panel lists the Swindon Town programme after achievements", ()
 
 test("minimal: no development panel without entries", () => {
   assert.equal(byTestId(minimal, "development").length, 0);
+});
+
+test("labelled Soccer for US readers; the old /football/ address redirects", () => {
+  assert.equal(text(full.querySelector("h1")), "Soccer");
+  assert.match(full.querySelector("title").textContent, /^Soccer \|/);
+  assert.equal(text(full.querySelector('nav a[href="/soccer/"]')), "Soccer");
+  const old = readFileSync(`${FULL}/football/index.html`, "utf8");
+  assert.match(old, /http-equiv="refresh" content="0; url=\/soccer\/"/);
+  assert.match(old, /rel="canonical" href="https:\/\/idristhomasjones.com\/soccer\/"/);
+});
+
+test("no 'football' in visible text except league/team names and quotes", () => {
+  for (const p of ["/", "/soccer/", "/academics/", "/media/"]) {
+    const doc = page(FULL, p);
+    doc.querySelectorAll("blockquote, script").forEach((el) => el.remove());
+    const visible = text(doc.querySelector("body")) + " " + doc.querySelector("title").textContent + " " +
+      [...doc.querySelectorAll('meta[name="description"], meta[property^="og:"]')].map((m) => m.getAttribute("content")).join(" ");
+    const stray = visible.replace(/National Football Youth League/g, "").match(/.{0,30}football.{0,30}/i);
+    assert.equal(stray, null, `${p}: "${stray?.[0]}"`);
+  }
 });

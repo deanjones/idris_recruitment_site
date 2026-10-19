@@ -37,7 +37,7 @@ test("contact button", () => {
 
 test("three tiles in order, each linking to its page", () => {
   const tiles = byTestId(full, "tile");
-  assert.deepEqual(tiles.map((t) => t.getAttribute("data-section")), ["football", "academics", "media"]);
+  assert.deepEqual(tiles.map((t) => t.getAttribute("data-section")), ["soccer", "academics", "media"]);
   for (const t of tiles) {
     const s = t.getAttribute("data-section");
     assert.ok(t.querySelector(`a[href="/${s}/"]`), `tile ${s} has no link`);
@@ -98,7 +98,7 @@ test("academics tile summary", () => {
 });
 
 test("football tile shows its summary as three separate lines", () => {
-  const tile = full.querySelector('[data-testid="tile"][data-section="football"]');
+  const tile = full.querySelector('[data-testid="tile"][data-section="soccer"]');
   const lines = [...tile.querySelectorAll(".tile-lines li")].map(text);
   assert.deepEqual(lines, [
     "NFYL South Premier champions 25/26",

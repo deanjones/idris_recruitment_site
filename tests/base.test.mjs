@@ -26,7 +26,7 @@ test("minimal: no og:image without a headshot", () => {
 });
 
 test("site icon is linked on every page and published", () => {
-  for (const p of ["/", "/football/", "/academics/", "/media/"]) {
+  for (const p of ["/", "/soccer/", "/academics/", "/media/"]) {
     const doc = page(FULL, p);
     assert.equal(doc.querySelector('link[rel="icon"][type="image/svg+xml"]')?.getAttribute("href"), "/assets/icon.svg", p);
     assert.equal(doc.querySelector('link[rel="apple-touch-icon"]')?.getAttribute("href"), "/assets/apple-touch-icon.png", p);

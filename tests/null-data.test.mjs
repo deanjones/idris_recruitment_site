@@ -7,7 +7,7 @@ const OUT = "tests/.out/null-data";
 
 test("every page builds when data keys are null", async () => {
   await buildSite({ dataDir: "../tests/fixtures/null-data", outDir: OUT });
-  for (const p of ["/", "/football/", "/academics/", "/media/"]) {
+  for (const p of ["/", "/soccer/", "/academics/", "/media/"]) {
     assert.ok(page(OUT, p).querySelector("main"), `${p} missing`);
   }
 });

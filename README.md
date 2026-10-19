@@ -10,13 +10,50 @@ npm start       # local preview at http://localhost:8080, reloads as you edit
 npm test        # builds the site and runs every check, including the privacy checks
 ```
 
+## Setting up on a new machine
+
+Nothing secret lives in the repository, so there's no `.env` or key file to create. A new machine needs the tools, your personal git identity, and a few local-only files.
+
+1. **Install** Node.js 22 (the version the deploy uses), git, and the GitHub CLI (`gh`).
+
+2. **Sign in as your personal account and clone:**
+   ```bash
+   gh auth login        # GitHub.com, HTTPS, sign in as deanjones
+   gh auth setup-git    # git pushes use that account
+   git clone https://github.com/deanjones/idris_recruitment_site.git
+   cd idris_recruitment_site
+   npm ci               # installs the exact package versions
+   ```
+
+3. **Set the private commit email.** It's stored only in each clone's own git settings, so it never comes with the clone. Without it, commits use the machine's default email, which could be a work address, and that stays in the public history for good.
+   ```bash
+   git config user.email "175814+deanjones@users.noreply.github.com"
+   ```
+
+4. **Copy the local-only files across.** These are kept out of GitHub on purpose:
+
+   | File/folder | Needed? | Why |
+   |---|---|---|
+   | `private-terms.txt` | **Yes** | Without it, the school-name check is skipped locally. Copy it privately (USB stick, or retype it), never by email or through the repo. GitHub still checks every push using the `PRIVATE_TERMS` secret. |
+   | `originals/` | Only to add or redo photos | Full-size original photos. The cleaned copies are already in the repo. |
+   | `docs/` | Optional | The original design document and build plan, for reference. |
+
+5. **Check it works:**
+   ```bash
+   npm test     # should end with "# fail 0" and "# skipped 0"
+   npm start    # preview at http://localhost:8080
+   ```
+   `# skipped 1` means `private-terms.txt` is missing.
+
+If the machine also has a work GitHub account signed in, `gh auth switch` changes the account for the whole machine. Run `gh auth status` before pushing and check it says **deanjones**.
+
 ## Editing content
 
 | File | What it controls |
 |---|---|
 | `profile.yml` | Profile card: name, class, positions, club, headshot (and its zoom), highlight link, optional attributes (height, foot…) |
-| `testimonials.yml` | Coach quotes (homepage and Football page) |
-| `football.yml` | Football page: positions, achievements, optional season stats |
+| `testimonials.yml` | Coach quotes (homepage and Soccer page) |
+| `football.yml` | Soccer page: positions, achievements, optional season stats |
 | `academics.yml` | Academics page: GPA equivalent, A-levels, GCSEs, honours, optional test scores |
 | `videos.yml` | Highlight reel and full-match videos |
 | `photos.yml` | Photo gallery |

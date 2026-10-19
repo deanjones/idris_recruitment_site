@@ -35,6 +35,7 @@ test("nothing private is tracked by git", () => {
 test("README covers the owner's jobs", () => {
   const readme = read("README.md");
   for (const h of [
+    "## Setting up on a new machine",
     "## Editing content",
     "## Adding photos",
     "## Adding videos",
