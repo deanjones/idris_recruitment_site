@@ -105,7 +105,7 @@ The quotes come word for word from written coach performance evaluations. They'r
 
 ```yaml
 - quote: "The exact words from the evaluation."
-  coach: "Swindon Town FITC coach"     # describe the coach – never their name
+  coach: "Swindon Town coach"     # describe the coach – never their name
   source: "End-of-season performance evaluation, 2023/24"
   homepage: true        # include in the homepage strip
   placeholder: false    # removes the Sample badge

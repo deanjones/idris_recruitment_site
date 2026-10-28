@@ -78,7 +78,7 @@ test("development panel lists the Swindon Town programme after achievements", ()
   assert.deepEqual(items, [
     "2024–present Chippenham Town Academy",
     "2022–2025 Cirencester Town",
-    "2018–2024 Swindon Town FITC Elite Player Program",
+    "2018–2024 Swindon Town Elite Player Program",
     "2016–2022 Stratton Youth",
   ]);
 });

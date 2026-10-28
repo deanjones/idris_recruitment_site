@@ -12,7 +12,7 @@ before(async () => {
   minimal = page(MINIMAL, "/");
   const out = await buildVariant("realquote", {
     "testimonials.yml": `testimonials:
-  - {quote: "Excellent vision and weight of pass.", coach: "Swindon Town FITC coach", source: "End-of-season performance evaluation, 2023/24", homepage: true, placeholder: false}
+  - {quote: "Excellent vision and weight of pass.", coach: "Swindon Town coach", source: "End-of-season performance evaluation, 2023/24", homepage: true, placeholder: false}
 `,
   });
   real = page(out, "/");
@@ -49,7 +49,7 @@ test("evaluation quote shows quote, anonymous coach and source, with no badge", 
   const q = byTestId(real, "testimonial")[0];
   assert.ok(!q.querySelector('[data-testid="sample-badge"]'));
   assert.equal(text(q.querySelector("blockquote")), "“Excellent vision and weight of pass.”");
-  assert.equal(text(q.querySelector('[data-testid="quote-coach"]')), "Swindon Town FITC coach");
+  assert.equal(text(q.querySelector('[data-testid="quote-coach"]')), "Swindon Town coach");
   assert.equal(text(q.querySelector('[data-testid="quote-source"]')), "End-of-season performance evaluation, 2023/24");
 });
 

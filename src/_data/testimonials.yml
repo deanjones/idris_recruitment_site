@@ -1,6 +1,6 @@
 # Quotes taken word for word from written coach performance evaluations.
 #   quote:   the exact words from the evaluation
-#   coach:   an anonymous description of the coach, e.g. "Swindon Town FITC coach"
+#   coach:   an anonymous description of the coach, e.g. "Swindon Town coach"
 #            (never the coach's name – it isn't shown even if added)
 #   source:  where it was written, e.g. "End-of-season performance evaluation, 2023/24"
 #   homepage: true    – include in the rotating quote under the profile card
@@ -15,17 +15,17 @@ testimonials:
     homepage: true
     placeholder: false
   - quote: "Idris has amazing technical ability and can light a game up with his energy, skills and positive offensive play. He is comfortable with both feet which makes him extremely dangerous for opposition defenders. Idris makes amazing dynamic runs, which creates space for teammates. He is a fierce dribbler and carrier of the ball, frequently creating chances, goals and winning set-pieces."
-    coach: "Swindon Town FITC coach"
+    coach: "Swindon Town coach"
     source: "IDP (U15)"
     homepage: true
     placeholder: false
   - quote: "Idris has got great feet, and can dribble and run with the ball. He is very quick, with pace on and off the ball. Idris is strong and agile, and can change direction and pace well. He is a very likeable character, always focused in training and matches, and popular with the rest of the squad."
-    coach: "Swindon Town FITC coach"
+    coach: "Swindon Town coach"
     source: "IDP (U14)"
     homepage: true
     placeholder: false
   - quote: "Idris has a good understanding of his role as an individual and how that works in the team. He is a quick, strong player, he shows good balance and agility and is not afraid to take on players 1v1. Idris is a great player, a pleasure to coach and is respected by his teammates."
-    coach: "Swindon Town FITC coach"
+    coach: "Swindon Town coach"
     source: "IDP (U13)"
     homepage: true
     placeholder: false
